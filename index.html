@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales &amp; Trading Society | Link Infrastructure</title>
+    <style>
+        :root {
+            --bg-main: #050608;          /* Pure slate black - zero brown */
+            --box-bg: #0f1115;           /* Deep terminal slate charcoal for the faded boxes */
+            --card-inner: #15181e;       /* Contrast background inside the links */
+            --border-tech: #1e222b;      /* Muted terminal grid lines */
+            --text-primary: #ffffff;     /* Solid white data output */
+            --text-secondary: #747d8c;   /* Slate gray for descriptions */
+            
+            /* Theme Accents */
+            --st-teal: #00a3a3;          /* On-theme Bloomberg Teal/Blue-Green */
+            --accent-green: #2ed573;     /* Muted live indicator green (strictly accent) */
+            --accent-yellow: #ffa502;    /* Muted streaming indicator yellow (strictly accent) */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border-radius: 4px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 60px 20px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .portal-container {
+            width: 100%;
+            max-width: 580px;
+        }
+
+        /* Header UI matching image_e9c52c.png layout proportions */
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+            border-bottom: 1px solid var(--border-tech);
+            padding-bottom: 28px;
+        }
+
+        .logo-container {
+            font-family: "Book Antiqua", Palatino, "Palatino Linotype", Georgia, serif;
+            font-size: 46px;
+            color: var(--text-primary);
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 12px;
+            user-select: none;
+        }
+
+        .logo-s { font-size: 50px; line-height: 1; }
+        .logo-amp {
+            font-size: 18px;
+            position: relative;
+            margin-left: 8px;
+            margin-right: 6px;
+            bottom: 2px;
+        }
+        .logo-t { font-size: 50px; line-height: 1; }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 13px;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        /* Terminal Faded Box Containers */
+        .tech-panel {
+            background-color: var(--box-bg);
+            border: 1px solid var(--border-tech);
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-tech);
+        }
+
+        .panel-title {
+            font-size: 11px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--st-teal); /* Using on-theme trading teal */
+            font-weight: 700;
+        }
+
+        /* Subtle Accent Indicators */
+        .panel-status {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 10px;
+            padding: 2px 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-tech);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50% !important;
+        }
+        .dot-green { background-color: var(--accent-green); }
+        .dot-yellow { background-color: var(--accent-yellow); }
+
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .link-row {
+            display: block;
+            background-color: var(--card-inner);
+            border: 1px solid transparent;
+            padding: 12px 14px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.15s ease-in-out;
+        }
+
+        .link-row:hover {
+            border-color: var(--st-teal);
+            background-color: rgba(0, 163, 163, 0.04);
+            transform: translateY(-1px);
+        }
+
+        .link-headline {
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .link-action {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            transition: color 0.15s ease;
+        }
+
+        .link-row:hover .link-action {
+            color: var(--st-teal);
+        }
+
+        .link-subtext {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-container">
+        
+        <div class="header">
+            <div class="logo-container">
+                <span class="logo-s">S</span>
+                <span class="logo-amp">&amp;</span>
+                <span class="logo-t">T</span>
+            </div>
+            <h1>Sales &amp; Trading Society</h1>
+            <p class="subtitle">Institutional network infrastructure, live tracking utilities, and core deployment pipelines.</p>
+        </div>
+
+        <!-- PANEL 01 -->
+        <div class="tech-panel">
+            <div class="panel-header">
+                <span class="panel-title">// CORE_SOCIETY_NODES</span>
+                <span class="panel-status"><span class="status-dot dot-green"></span>CONNECTED</span>
+            </div>
+            <div class="links-list">
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>Official Membership Registration</span>
+                        <span class="link-action">EXECUTE →</span>
+                    </div>
+                    <div class="link-subtext">Initialize secure communications and enter active distribution networks.</div>
+                </a>
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>Junior Analyst Application</span>
+                        <span class="link-action">INITIALIZE →</span>
+                    </div>
+                    <div class="link-subtext">Submit application metrics for flagship student-managed macro strategies.</div>
+                </a>
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>Constitution &amp; Syllabus Matrix</span>
+                        <span class="link-action">FETCH //</span>
+                    </div>
+                    <div class="link-subtext">Review governance structural frameworks and standard cohort milestones.</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- PANEL 02 -->
+        <div class="tech-panel">
+            <div class="panel-header">
+                <span class="panel-title">// MARKET_PIPELINES</span>
+                <span class="panel-status"><span class="status-dot dot-yellow"></span>LIVE_FEED</span>
+            </div>
+            <div class="links-list">
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>The Society Terminal</span>
+                        <span class="link-action">OPEN_STREAM →</span>
+                    </div>
+                    <div class="link-subtext">Central matrix dashboard tracking cross-asset macro metrics and derivatives.</div>
+                </a>
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>TradingView Desk Watchlist</span>
+                        <span class="link-action">SYNC_DATA →</span>
+                    </div>
+                    <div class="link-subtext">Multi-horizon technical layouts updated directly by global desk leads.</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- PANEL 03 -->
+        <div class="tech-panel">
+            <div class="panel-header">
+                <span class="panel-title">// QUANT_REPOSITORIES</span>
+                <span class="panel-status"><span class="status-dot dot-green"></span>SECURE_ACCESS</span>
+            </div>
+            <div class="links-list">
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>Technical Interview Prep Engine</span>
+                        <span class="link-action">DOWNLOAD ↓</span>
+                    </div>
+                    <div class="link-subtext">Structured analytics covering options math, bond pricing, and market structure.</div>
+                </a>
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>Macro Pitch Architecture Framework</span>
+                        <span class="link-action">GET_TEMPLATE →</span>
+                    </div>
+                    <div class="link-subtext">Standardized quantitative template layouts required for risk portfolio updates.</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- PANEL 04 -->
+        <div class="tech-panel">
+            <div class="panel-header">
+                <span class="panel-title">// NETWORK_EXTERNAL</span>
+                <span class="panel-status"><span class="status-dot dot-green"></span>ONLINE</span>
+            </div>
+            <div class="links-list">
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>Corporate LinkedIn Node</span>
+                        <span class="link-action">ENGAGE →</span>
+                    </div>
+                    <div class="link-subtext">Placement logs, firm relations, and corporate identity updates.</div>
+                </a>
+                <a href="#" class="link-row" target="_blank">
+                    <div class="link-headline">
+                        <span>Trading Floor Discord Environment</span>
+                        <span class="link-action">JOIN_SERVER →</span>
+                    </div>
+                    <div class="link-subtext">Real-time macro chatter, active cohort sub-desks, and announcements.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 SALES &amp; TRADING SOCIETY // DEPLOYMENT_SUCCESSFUL
+        </div>
+
+    </div>
+
+</body>
+</html>
